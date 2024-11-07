@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+  
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  :root {
+    --background-color-dark: rgb(28, 28, 28);
+    --background-color-light: rgb(216, 216, 216);
+    --selected-field-dark: rgba(255, 255, 255, 0.2);
+    --selected-field-light: rgba(0, 0, 0, 0.2);
+  }
+  
+  html {
+    height: 100%;
+  }
+  
+  body {
+    height: 99%;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    font-family: sans-serif;
+    font-size: 2rem;
+  
+    background-color: var(--background-color-dark);
+    color: var(--background-color-light);
+  }
+  
+  span#turnt {
+    margin-bottom: 1rem;
+  }
+  
+  span#turnb {
+    margin-top: 1rem;
+    rotate: 180deg;
+  }
+  
+  div#game {
+    width: max(20rem, 35vw);
+    height: max(20rem, 35vw);
+  
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  
+    border: 3px var(--background-color-light) solid;
+  }
+  
+  div.field {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  
+    border: 3px var(--background-color-light) solid;
+  }
+  
+  div.cell {
+    border: 3px var(--background-color-light) solid;
+    transition: background-color 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  
+  div.cell:not(.locked):not(.red):not(.blue) {
+    cursor: pointer;
+  }
+  
+  div.cell:hover:not(.locked):not(.red):not(.blue) {
+    background-color: var(--selected-field-dark);
+  }
+  
+  div.locked {
+    pointer-events: none;
+  
+    background-color: rgba(255, 144, 0, 0.1);
+  }
+  
+  div.red {
+    background-color: red;
+  }
+  
+  div.blue {
+    background-color: blue;
+  }
+  
+  div.field.red > div.cell,
+  div.field.blue > div.cell {
+    display: none;
+  }
+  
